@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Group from './components/group/Group';
+import Students from './components/students/Students';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="main__container">
+        <h1 className='header'style={{textAlign: "center"}}>Group Management</h1>
+        <div style={{textAlign: "center", fontSize: "20px"}}>
+          <Link to="/group"><span>Group</span></Link>
+          <Link to="/students"><span style={{marginLeft: "20px"}}>Students</span></Link>
+        </div>
+      </div>
+      <Switch>
+        <Route path="/group">
+          <Group />
+         </Route>
+         <Route path="/students">
+           <Students />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
-
-export default App;
